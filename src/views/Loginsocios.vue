@@ -3,7 +3,7 @@
 </script>
 
 <template>
- este es el login para socios
+<p class="text-red-500">este es el login para socios</p>
 </template>
 
 <style scoped>
