@@ -14,7 +14,7 @@
                 type="text"
                 id="rut"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Enter RUT"
+                placeholder="Ingresar RUT"
               />
               <p v-if="rutError" class="text-red-500 text-xs italic mt-2">{{ rutError }}</p>
             </div>
@@ -25,7 +25,7 @@
                 type="text"
                 id="memberNumber"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Enter Member Number"
+                placeholder="Ingresar Número de Miembro"
               />
               <p v-if="memberNumberError" class="text-red-500 text-xs italic mt-2">{{ memberNumberError }}</p>
             </div>
