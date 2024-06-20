@@ -10,6 +10,7 @@
             <div class="mb-4">
               <label for="rut" class="block text-gray-700 text-sm font-bold mb-2">RUT:</label>
               <input
+                @input="formatRUT"
                 v-model="rut"
                 type="text"
                 id="rut"
@@ -45,11 +46,24 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import { useRouter } from "vue-router"
+const { push } = useRouter()
 
 const rut = ref('')
 const memberNumber = ref('')
 const rutError = ref('')
 const memberNumberError = ref('')
+const formatRUT = () => {
+      let value = rut.value.replace(/\D/g, ''); // Elimina todo lo que no sea dígitos
+      if (value.length > 1) {
+        value = value.slice(0, -1) + '-' + value.slice(-1); // Añade guión antes del dígito verificador
+      }
+      value = value
+        .replace(/\B(?=(\d{3})+(?!\d))/g, '.') // Añade puntos cada tres dígitos
+        .replace(/^(\d{2})(\.\d{3})$/, '0$1$2'); // Asegura el formato de dos dígitos al principio si es necesario
+
+      rut.value = value;
+    }
 
 const validateRut = (rut) => {
   rut = rut.replace(/\./g, '').replace(/-/g, '')
@@ -107,7 +121,11 @@ const handleSubmit = async () => {
       rut: rut.value,
       memberNumber: memberNumber.value,
     })
-    console.log('Login successful:', response.data)
+
+    localStorage.setItem('socioLogeado', JSON.stringify(response.data));
+
+    push('/datasocio');  // Navega a la ruta /about
+
   } catch (error) {
     console.error('Error logging in:', error)
   }
