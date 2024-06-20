@@ -3,22 +3,22 @@
       <h2 class="text-xl font-bold mb-6 text-center">Información de Documentos</h2>
       <div class="mb-6 p-4 bg-white rounded-lg shadow-md">
         <div class="mb-4">
-          <strong>Nombre:</strong> {{ person.name }}
+          <strong class="text-gris">Nombre: {{ person.name }}</strong> 
         </div>
         <div class="mb-2">
-          <strong>Registro Social de Hogares:</strong>
+          <strong class="text-gris">Registro Social de Hogares:</strong>
           <span :class="getClass(person.registroSocial)">
             {{ person.registroSocial ? ' Sí' : ' No' }}
           </span>
         </div>
         <div class="mb-2">
-          <strong>Libreta de Ahorro:</strong>
+          <strong class="text-gris">Libreta de Ahorro:</strong>
           <span :class="getClass(person.libretaAhorro)">
             {{ person.libretaAhorro ? ' Sí' : ' No' }}
           </span>
         </div>
         <div class="mb-2">
-          <strong>Carnet (Ambos Lados):</strong>
+          <strong class="text-gris">Carnet (Ambos Lados):</strong>
           <span :class="getClass(person.carnet)">
             {{ person.carnet ? ' Sí' : ' No' }}
           </span>
@@ -31,8 +31,6 @@
   import { ref } from 'vue'
 
   const data = JSON.parse(localStorage.getItem('socioLogeado'));
-
-  console.log(data);
 
   const person = ref(
     {
@@ -64,5 +62,8 @@
     }
     .text-red-700 {
       color: #b91c1c;
+    }
+    .text-gris{
+      color: #2c3e50;
     }
   </style>
