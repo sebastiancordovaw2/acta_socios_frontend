@@ -129,9 +129,10 @@ const handleSubmit = async () => {
       method: 'POST'
     });
 
-    //localStorage.setItem('socioLogeado', JSON.stringify(response.data));
+    console.log(response.data);
+    localStorage.setItem('socioLogeado', JSON.stringify(response.data));
 
-    //push('/datasocio');  // Navega a la ruta /about
+    push('/datasocio');  // Navega a la ruta /about
 
   } catch (error) {
     console.error('Error logging in:', error)
