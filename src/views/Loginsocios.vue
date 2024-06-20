@@ -17,6 +17,7 @@
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Ingresar RUT"
               />
+              <small>Ej: 12.345.678-9</small>
               <p v-if="rutError" class="text-red-500 text-xs italic mt-2">{{ rutError }}</p>
             </div>
             <div class="mb-4">
