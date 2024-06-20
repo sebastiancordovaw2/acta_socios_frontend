@@ -129,7 +129,11 @@ const handleSubmit = async () => {
       method: 'POST'
     });
 
-    console.log(response.data);
+    if(!response.data.length)
+    {
+      alert("Socio no ingresado");
+      return false;
+    }
     localStorage.setItem('socioLogeado', JSON.stringify(response.data));
 
     push('/datasocio');  // Navega a la ruta /about
