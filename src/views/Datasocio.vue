@@ -29,13 +29,17 @@
   
   <script setup>
   import { ref } from 'vue'
-  
+
+  const data = JSON.parse(localStorage.getItem('socioLogeado'));
+
+  console.log(data);
+
   const person = ref(
     {
-      name: 'Juan Pérez',
-      registroSocial: true,
-      libretaAhorro: false,
-      carnet: true
+      name: data[0].nombre_completo,
+      registroSocial: data[0].registro_social_de_hogares,
+      libretaAhorro: data[0].libreta_de_ahorro,
+      carnet:  data[0].carnet_ambos_lados
     }
     // Agrega más personas según sea necesario
   )
