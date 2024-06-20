@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto p-2">
-      <h2 class="text-2xl font-bold mb-6 text-center">Información de Documentos</h2>
+      <h2 class="text-xl font-bold mb-6 text-center">Información de Documentos</h2>
       <div class="mb-6 p-4 bg-white rounded-lg shadow-md">
         <div class="mb-4">
           <strong>Nombre:</strong> {{ person.name }}
