@@ -19,13 +19,13 @@
               <p v-if="rutError" class="text-red-500 text-xs italic mt-2">{{ rutError }}</p>
             </div>
             <div class="mb-4">
-              <label for="memberNumber" class="block text-gray-700 text-sm font-bold mb-2">Número de Miembro:</label>
+              <label for="memberNumber" class="block text-gray-700 text-sm font-bold mb-2">Número de Socio:</label>
               <input
                 v-model="memberNumber"
                 type="text"
                 id="memberNumber"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Ingresar Número de Miembro"
+                placeholder="Ingresar Número de Socio"
               />
               <p v-if="memberNumberError" class="text-red-500 text-xs italic mt-2">{{ memberNumberError }}</p>
             </div>
@@ -103,7 +103,7 @@ const handleSubmit = async () => {
   }
 
   try {
-    const response = await axios.post('https://api.example.com/login', {
+    const response = await axios.post(import.meta.env.VITE_API_URL+'/login_socios', {
       rut: rut.value,
       memberNumber: memberNumber.value,
     })
