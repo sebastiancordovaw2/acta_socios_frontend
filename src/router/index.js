@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Loginsocios from '../views/Loginsocios.vue';
 import Datasocios from '../views/Datasocios.vue';
+import Datasocio from '../views/Datasocio.vue';
 
 const routes = [
   {
     path: '/',
     name: 'LoginSocios',
     component: Loginsocios
+  },
+  {
+    path: '/datasocio',
+    name: 'DataSocio',
+    component: Datasocio
   },
   {
     path: '/datasocios',
