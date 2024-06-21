@@ -55,16 +55,21 @@ const memberNumber = ref('')
 const rutError = ref('')
 const memberNumberError = ref('')
 const formatRUT = () => {
-      let value = rut.value.replace(/\D/g, ''); // Elimina todo lo que no sea dígitos
-      if (value.length > 1) {
-        value = value.slice(0, -1) + '-' + value.slice(-1); // Añade guión antes del dígito verificador
-      }
-      value = value
-        .replace(/\B(?=(\d{3})+(?!\d))/g, '.') // Añade puntos cada tres dígitos
-        .replace(/^(\d{2})(\.\d{3})$/, '0$1$2'); // Asegura el formato de dos dígitos al principio si es necesario
+  let value = rut.value.replace(/[^0-9kK]/g, ''); // Eliminate everything except digits and 'k'
 
-      rut.value = value;
-    }
+  if (value.length > 1) {
+    const checkDigit = value.slice(-1); // Get the last character (digit or 'k')
+    value = value.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + checkDigit; // Add dots and dash
+  } else {
+    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Add dots every three digits
+  }
+
+  if (value.match(/^\d{2}\.\d{3}$/)) {
+    value = '0' + value; // Ensure the format starts with two digits if necessary
+  }
+
+  rut.value = value.toLowerCase(); // Convert the 'k' to uppercase
+}
 
 const validateRut = (rut) => {
   rut = rut.replace(/\./g, '').replace(/-/g, '')
