@@ -28,8 +28,8 @@
   </template>
   
   <script setup>
-  import { ref } from 'vue'
-
+  import { onMounted, ref } from 'vue'
+  import Swal from 'sweetalert2';
   const data = JSON.parse(localStorage.getItem('socioLogeado'));
 
   const person = ref(
@@ -45,6 +45,31 @@
   const getClass = (hasDocument) => {
     return hasDocument ? 'font-bold text-green-700' : 'font-bold text-red-700'
   }
+
+  const showAlert = () => {
+  Swal.fire({
+    title: 'Próxima reunión',
+    html: `<p class='font-bold text-left'>Estimado/a ${data[0].nombre_completo}</p>,
+
+            <p class='text-left'>Te invitamos a la reunión del día domingo 30 de junio a las 15:00. hrs</p></br>
+
+            <p class='text-left'>Detalles:</p></br>
+
+            <p class='text-left font-bold'>
+            Fecha: Domingo 30 de junio</br>
+            Hora: 15:00 hrs</br>
+            Lugar: Cancha corral de Pérez</br>
+            Saludos cordiales</p>`,
+    icon: 'info',
+    confirmButtonText: 'OK'
+  });
+
+  
+
+};
+onMounted(()=>{
+    showAlert();
+ })
   </script>
   
   <style scoped>
